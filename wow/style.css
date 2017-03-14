@@ -1,0 +1,232 @@
+/*reset style*/
+border,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+body,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+ul,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+ /* common css */
+ .clearfix:after {
+     content: "";
+     display: block;
+     clear: both;
+ }
+ .layout {
+     width: 1200px;
+     margin: 0 auto;
+ }
+ * {
+     box-sizing: border-box;
+ }
+ /* page css */
+ 
+ body {
+     font: 12px/1.3 arial;
+     background: #000;
+ }
+ body,html {
+     height: 100%;
+ }
+ #header {
+     background: url(./image/headerimage.jpg) center center no-repeat;
+     height: 100%;
+     background-size: cover;
+     /*border-top: 1px solid transparent;*/
+     overflow: hidden;
+ }
+ .navbar {
+     margin-top: 40px;
+ }
+ .navbar > li {
+     width: 160px;
+     height: 70px;
+     float: left;
+     border: 1px solid #3F2A22;
+     border-right: none;
+
+ }
+.navbar > li:last-child {
+    border-right: 1px solid #3F2A22;
+}
+
+ .navbar a{
+     color: #f8b700;
+     font-size: 17px;
+     font-weight: bold;
+     display: block;
+     background-color: #1c110d;
+     text-align: center;
+     height: 68px;
+     line-height: 70px;
+ }
+ .navbar .logo {
+     width: 230px;
+ }
+.navbar .logo img {
+    position: relative;
+    top: -42px;
+}
+/* content */
+
+#content {
+    background: #100C09;
+    border-top: 1px solid #2C2723;
+    border-bottom: 1px solid #2C2723;
+
+}
+#content li {
+    float: left;
+    margin-right: 13px;
+    margin-top: 30px;
+    margin-bottom: 95px;
+    position: relative;
+}
+#content li:hover{
+    top: -10px;
+    
+}
+#content li:hover h3 {
+    transition: all .5s ease 0s;
+    color: #fff;
+}
+#content li:last-child {
+    margin-right: 0;
+}
+#content li h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #F8B700;
+    line-height: 70px;
+    background: #241712;
+    text-align: center;
+}
+#content li img {
+    border-top: 1px solid #45300F;
+    border-bottom: 1px solid #45300F;
+    padding: 1px 0;
+}
+/* write footer */
+#footer .top-footer {
+    width: 1000px;
+    margin: 0 auto;
+}
+.top-footer .left-topfooter span {
+    /*border: 1px solid #fff;*/
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-image: url(./image/result.png);
+    vertical-align: middle;
+}
+.top-footer .kefu {
+    background-position: 0px 1px
+     margin-right: 15px;
+}
+.top-footer .feedback {
+    background-position: -9px -31px;
+    margin-right: 15px;
+    margin-left: 40px;
+}
+.top-footer .join {
+    background-position: -9px -76px;
+     margin-right: 15px;
+     margin-left: 40px;
+}
+#footer .bottom-leftfooter .bllize {
+    width: 140px;
+    height: 158px;
+    display: inline-block;
+    background-image: url(./image/blizzard.png);
+    vertical-align: middle; 
+    margin-right: 35px;
+}
+#footer .bottom-leftfooter .easy {
+    width: 125px;
+    height: 80px;
+    display: inline-block;
+    background-image: url(./image/163.png);
+    vertical-align: middle; 
+    /*background-position: 1px 1px;*/
+    background-repeat: no-repeat;
+}
+#footer .left-topfooter {
+      margin-top: 50px;       
+      /*margin-bottom: 80px;*/
+      font-size: 15px;
+      width: 350px;
+      display: inline-block; 
+}
+#footer .top-leftfooter {
+    margin-bottom: 90px;
+}
+#footer .top-leftfooter a {
+    color: #A7A79F;
+}
+
+#footer .top-leftfooter a:hover {
+    color: #FFEFBF;
+}
+#footer .right-topfooter {
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    /*top: -50px;*/
+    /*border: 1px solid #fff;*/
+    vertical-align: middle;
+    top: -86px;
+
+    /*left: -144px;*/
+}
+#footer .top-rightfooter {
+    text-align: right;
+    padding-right: 40px;
+}
+.right-topfooter .top-rightfooter a {
+    vertical-align: middle;
+    display: inline-block;
+}
+#footer .API a {
+    color: #fff;
+    font-size: 15px;
+}
+#footer .API p {
+    color: #ccc;
+    display: block;
+    font-size: 12px;
+    
+} 
+#footer .API {
+    float: right;
+    position: relative;
+    margin-top: 108px;
+}
+#footer .right-topfooter img {
+    margin-right: 20px;
+}
+#footer .bottom-footer {
+    text-align: center;
+    color: #474747;
+    /*position: relative;*/
+    /*top: -90px;*/
+    border-top: 1px solid #1A1A1A;
+    padding-top: 30px;
+    position: relative;
+    top: -36px;
+}

@@ -91,7 +91,7 @@ p {
     left: 50%;*/
     float: left;
     margin-top: 480px;
-    margin-bottom: 620px;
+    margin-left: 620px;
     /*transform: translate(-50%,-50%);*/
     transition: all 3.5s;
 }

@@ -1,0 +1,353 @@
+/*http://baike.baidu.com/link?url=1lAwJrTQpDv3wm2TYJHwsV5Fjovv5kdyd3N5n60FgpQLsLS74xDaB45XOgx7qtPv78_YF7dMvc5m-PW5xuXmDpa-OKS4hHSnaSfKVsTvbsrpp2eIp6dQmp8cYtZ6clLdXFM4eFiYmCBlaQSVzok6KqPwiO4FmcAiTLtAJZrQL0Dk3uIH19vSBL2aRWJQTmnYTBsR_oywdJIUVSiG06-ojbcnLwO2gwCrdiMjl8w0bAXOTnFphaUWo57jFCZBbr7b5PzYU5vvbs4MIPBULOhBB1itTD-Lhr9parY-b1kpL7dQpsb0GZeCkNOPfuUlaVRe#6*/
+/* css reset */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,border,dl,dt,dd {
+    margin: 0;
+    padding: 0;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    color: #666;
+}
+ul,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/* common css set */
+* {
+    box-sizing: border-box;
+}
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+body,html {
+    max-width: 100%;
+    height: 100%;
+}
+.layout {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.cen-ter {
+    text-align: center;
+}
+p {
+    text-indent: 2em;
+}
+/* page css */
+
+#navbar .navbar-head {
+    display: inline-block;
+    float: left;
+    font-size: 2em;
+}
+#navbar .navbar-head a {
+    color: #fff;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+}
+#navbar .navbar-right a {
+    color: #FFE42F;
+}
+#navbar .navbar-right {
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+    /*line-height: 2em;*/
+}
+.navbar-right li {
+    float: left;
+    /*/*border: 1px solid #E7B4BA;*/
+    padding-right:1em; 
+    color: #fff;
+    opacity: .8;
+    line-height: 2em;
+    font-size: 1.5em;
+}
+#navbar {
+    width: 100%;
+    height: 100%;
+    background-image: url(./555.jpg);
+    background-position: 0 -100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#navbar .navcontainer {
+    position: fixed;
+    width:100%;
+    
+    left: 0;
+    right: 0;
+    background: #252526;
+    opacity: 0.3;
+}
+#navbar .navbar-right a {
+    transition: all 2s;
+}  
+#navbar .welcome {
+    font-size: 3em;
+    position: relative;
+    top: 70%;
+    left: 50%;
+    /*transform: translate(-50%,-50%);*/
+    transition: all 2s;
+}
+/* second section */
+#synopsis {
+    background-image: url(./777.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 60px;
+}
+#synopsis .wall {
+    font-size: 1.4em;
+    padding: 40px;
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    
+}
+#synopsis h1, #synopsis p,#synopsis h3{
+    padding-bottom:30px; 
+    padding-top: 20px;
+    color: #F6F4F7;
+}
+#synopsis img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #a7695c;
+    border-radius:50%;
+}
+#synopsis .second-one {
+    display: inline-block;
+    width: 28%;
+    margin: 0 20px;
+    vertical-align: top;
+    font-size: 1.3em;
+    text-align: center;
+}
+/* nature */
+#billing {
+    background: #F0F0F0;
+}
+#billing img {
+    width: 100%;
+
+}
+#billing li {
+    display: inline-block;
+    width: 27%;
+    margin: 15px;
+    text-align: center;
+    vertical-align: top;
+    background:#DCD9D4;
+    padding-bottom: 20px;
+}
+#billing .nature h4 {
+    font-size: 1.4em;
+    padding: 20px;
+
+}
+#billing .nature p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 20px;
+    font-size: 1em;
+    
+}
+#billing .profile h3 {
+    padding-top: 40px;
+    font-size: 3em;
+    
+}
+#billing .nature {
+    padding: 40px;
+    
+}
+/* three section */
+#role-intr {
+    background: #E3EDEA;
+    position: relative;
+    z-index: -100;
+    padding-top: 60px; 
+    padding-bottom: 80px; 
+}
+#role-intr .tourism-head {
+    text-align: center;
+    padding-top: 60px;
+    /*padding-bottom: 80px;*/
+}
+
+#role-intr .tourism img {
+    width: 250px;
+    height: 250px;
+    border: 2px solid;
+    border-radius: 50%;
+    
+    vertical-align: middle;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#role-intr .tourism-intr {
+    width: 30%;
+    text-align: right;
+    /*margin-left: -100px;*/
+    /*top: -250px;*/
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    right: 11%;
+}
+#role-intr .tourism li:nth-child(even) .tourism-intr {
+    width: 30%;
+    text-align: left;
+    /*margin-left: 800px;*/
+    /*top: -250px;*/
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    left: 43%;
+}
+#role-intr .tourism li {
+    margin-top: 200px;
+}
+#role-intr .tourism {
+    position: relative;
+}
+#role-intr .tourism li:after {
+    content: " ";
+    position: absolute;
+    border-left: 1px solid #000;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    z-index: -1;
+}
+/* four section */
+#comment .culture-title {
+    text-align: center;
+    margin: 80px;
+}
+#comment {
+    /*background: url(6666.jpg);*/
+    margin: 0 auto;
+    /*background-repeat: no-repeat;
+    background-size: cover;*/
+    padding-bottom: 30px;
+    
+}
+#comment .culture img {
+   background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #a7695c;
+    border-radius:50%; 
+}
+.culture {
+    text-align: center;
+}
+.culture span {
+    display: inline-block;
+    width: 28%;
+    vertical-align: top;
+    text-align: center;
+}
+#comment h4 {
+    font-size: 2em;
+    padding-top:20px; 
+}
+#comment .culture p {
+    color: #25263B;
+    padding: 30px;
+    font-size: 1.3em;
+}
+#comment .culture-footer p {
+    color: #25263B;
+    width: 60%;
+    font-size: .9em;
+    margin: 0 auto;
+}
+/* fifth section */
+#your-review {
+    background-image: url(eee.jpg);
+    padding: 40px 0;
+}
+#your-review form {
+    text-align: center;
+}
+#your-review input {
+    padding: 2em 7.5em;
+    margin: 2em 2em;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #35354D;
+}
+#your-review .self-info{
+    display: inline-block;
+    
+}
+#your-review textarea {
+    display: inline-block;
+    width: 27.5em;
+    height:24em;
+    vertical-align: bottom;
+    margin: 2em 2em;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+     background: #35354D;
+}
+#your-review .refer button {
+    background:#B6B4B6;
+    padding: 0.5em 3em;
+    border-radius: 5px;
+    font-size: 1.5em;
+}
+/* last second */
+.copyring .icon-share a {
+    width: 25px;
+    height: 25px;
+    background-image: url(icon1.png);
+    transition: all 1s;
+    background-repeat: no-repeat;
+    display: inline-block;
+    
+    margin: 0 20px; 
+}
+
+.copyring .icon-share a:nth-child(1){
+    background-position: 0 0;
+}
+.copyring .icon-share a:nth-child(2){
+    background-position: -24px 0;
+}
+.copyring .icon-share a:nth-child(3){
+    background-position: -174px 0;
+}
+.copyring .icon-share a:hover {
+    background-position: 0 -25px;
+}
+.copyring .icon-share a:nth-child(2):hover{
+    background-position: -24px -25px;
+}
+.copyring .icon-share a:nth-child(3):hover{
+    background-position: -174px -25px;
+}
+
+.inbl {
+    display: inline-block;
+}
+.copyring {
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+}
+.ling {
+    /*line-height: 29px;*/
+    vertical-align: middle;
+}

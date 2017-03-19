@@ -1,4 +1,4 @@
-/*http://baike.baidu.com/link?url=1lAwJrTQpDv3wm2TYJHwsV5Fjovv5kdyd3N5n60FgpQLsLS74xDaB45XOgx7qtPv78_YF7dMvc5m-PW5xuXmDpa-OKS4hHSnaSfKVsTvbsrpp2eIp6dQmp8cYtZ6clLdXFM4eFiYmCBlaQSVzok6KqPwiO4FmcAiTLtAJZrQL0Dk3uIH19vSBL2aRWJQTmnYTBsR_oywdJIUVSiG06-ojbcnLwO2gwCrdiMjl8w0bAXOTnFphaUWo57jFCZBbr7b5PzYU5vvbs4MIPBULOhBB1itTD-Lhr9parY-b1kpL7dQpsb0GZeCkNOPfuUlaVRe#6*/
+
 /* css reset */
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,border,dl,dt,dd {
     margin: 0;
@@ -86,11 +86,14 @@ p {
 }  
 #navbar .welcome {
     font-size: 3em;
-    position: relative;
+    /*position: relative;
     top: 70%;
-    left: 50%;
+    left: 50%;*/
+    float: left;
+    margin-top: 480px;
+    margin-left: 620px;
     /*transform: translate(-50%,-50%);*/
-    transition: all 2s;
+    transition: all 3.5s;
 }
 /* second section */
 #synopsis {

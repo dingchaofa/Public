@@ -462,13 +462,7 @@ p {
 #your-review form {
     text-align: center;
 }
-#your-review input {
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    background: #35354D;
-    line-height: 46px;
-    font-size: 24px;
-}
+
 @media screen and (max-width:415px){
     #your-review .self-info{
     display: inline-block;
@@ -478,9 +472,14 @@ p {
     border-radius: 5px;
     background: #35354D;
     margin: 44px 0 30px;
-    font-size: 18px;
+    font-size: 14px;
 }
 #your-review input {
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #35354D;
+    line-height: 46px;
+    font-size: 20px;
     margin-top: 40px;
 }
 }

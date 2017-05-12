@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-simple-canvas</title>
+    <style>
+        .canvs {
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            border: 5px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canvs">
+        <button id='eraser'>橡皮擦</button>
+        <button id='again'>接着画</button>
+    </div>
+    <script>
+/*
+注意：
+1. 在手机模式下打开
+2. removeEventListener是直接从内存中删除之前绑定的事件，如果还需要之前的绑定事件，
+需要重新绑定
+*/
+        let canvs = document.querySelector('.canvs')
+        let eraser = document.querySelector('#eraser')
+        let again = document.querySelector('#again')
+
+        canvs.addEventListener('touchmove', draw) //画画
+
+        eraser.addEventListener('mouseenter', function () {
+            console.log('使用橡皮擦')
+            eraser.addEventListener('click', removeEraser)
+        }) //橡皮擦
+
+        again.addEventListener('mouseenter', function () {
+            console.log('可以接着画')
+            again.addEventListener('click', againDraw) //接着画
+        })
+
+        function againDraw() {
+            eraser.removeEventListener('click', removeEraser)
+            canvs.addEventListener('touchmove', draw)
+        }
+
+        function removeEraser() {
+            canvs.removeEventListener('touchmove', draw)
+
+            again.removeEventListener('click', againDraw)
+
+            canvs.addEventListener('touchmove', cancel)
+
+        }
+        function cancel(e) {
+            let point = document.elementFromPoint(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+            //console.log(point)
+            if (point !== canvs) {
+                canvs.removeChild(point)
+            }
+        }
+        function draw(e) {
+            let div = document.createElement('div')
+            div.setAttribute('class', 'point')
+            div.style.width = '5px'
+            div.style.height = '5px'
+            div.style.background = 'red'
+            div.style.position = 'absolute'
+            div.style.left = e.changedTouches[0].pageX + 'px'
+            div.style.top = e.changedTouches[0].pageY + 'px'
+            canvs.appendChild(div)
+        }
+    </script>
+</body>
+</html>

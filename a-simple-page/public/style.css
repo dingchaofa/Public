@@ -105,13 +105,15 @@ h1+p {
 /* alternate end */
 
 /* page css */
+#navbar {
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+}
 #navbar .navbar-head {
     float: left;
     font-size: 16px;
 }
 #navbar .navbar-head a {
     color: #fff;
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
 }
 #navbar .navbar-right a {
     color: #FFE42F;
@@ -208,6 +210,7 @@ h1+p {
 }
     .navbar-right {
         float: right;
+        
     }
     .navbar-right>li {
         float: left;

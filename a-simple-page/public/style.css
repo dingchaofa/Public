@@ -15,7 +15,7 @@ ul,ol {
 a {
     text-decoration: none;
 }
-p {
+.wall p,.tourism-intr p {
     text-indent: 2em;
 }
 .clearfix:after {
@@ -218,7 +218,7 @@ p {
     padding-bottom: 60px;
 }
 #synopsis .wall {
-    font-size: 14px;
+    font-size: 18px;
     padding: 40px;
     text-align: left;
 }

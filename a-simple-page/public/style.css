@@ -7,7 +7,10 @@
 }
 body,html {
     /*width: 100%;*/
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: Georgia, "Times New Roman", 
+             "Microsoft YaHei", "微软雅黑", 
+             STXihei, "华文细黑", 
+             serif;
     color: #666;
 }
 ul,ol {
@@ -18,6 +21,10 @@ a {
 }
 .wall p,.tourism-intr p {
     text-indent: 2em;
+    padding-top: 8px;
+}
+h1+p {
+    padding-top: 10px;
 }
 .clearfix:after {
     content: "";
@@ -265,6 +272,9 @@ a {
     padding-top: 20px;
     color: #F6F4F7;
 }
+#synopsis p{
+    text-align: left;
+}
 @media screen and (max-width:415px){
 #synopsis img {
     background-repeat: no-repeat;
@@ -313,6 +323,7 @@ a {
 /* synopsis end */
 /* nature  start*/
 #billing {
+    padding-top: 40px;
     background: #F0F0F0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -341,10 +352,6 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-left: 20px;
-}
-#billing .profile h3 {
-    padding-top: 40px;
-    font-size: 16px;
 }
 @media screen and (max-width:415px){
 #billing li {
@@ -513,6 +520,7 @@ a {
 #comment .culture p {
     color: #25263B;
     padding: 22px 15px;
+    text-align: left;
 }
 #comment .culture-footer p {
     color: #25263B;

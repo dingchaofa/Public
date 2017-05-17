@@ -2,7 +2,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 body,html {
     /*width: 100%;*/
@@ -40,6 +41,8 @@ a {
     overflow: hidden;
 }
 .carousel .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: relative;
 }
@@ -47,11 +50,16 @@ a {
     vertical-align: bottom;
 }
 .carousel .btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 .btn>div {
     width: 40px;
@@ -67,7 +75,8 @@ a {
     position: absolute;
     top: 90%;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
 }
 .carousel .icon li {
     width: 20px;
@@ -106,8 +115,12 @@ a {
     left: 0;
     background: #252526;
     opacity: 0.7;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 100%;
     padding: 10px 15px;
 }
@@ -118,11 +131,23 @@ a {
     #navbar .welcome {
     font-size: 28px;
     position: absolute;
+    -webkit-transition: all 3.5s;
     transition: all 3.5s;
     top: 70%;
     left: 50%;
     z-index: 10;
-    animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+    -webkit-animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+            animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+}
+@-webkit-keyframes welcome {
+    0% {
+        top: 0;
+        left:0;
+    }
+    100% {
+        top: 70%;
+        left: 50%;
+    }
 }
 @keyframes welcome {
     0% {
@@ -139,11 +164,23 @@ a {
     #navbar .welcome {
     font-size: 16px;
     position: absolute;
+    -webkit-transition: all 3.5s;
     transition: all 3.5s;
     top: 28%;
     left: 50%;
     z-index: 10;
-    animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+    -webkit-animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+            animation: welcome 3.5s cubic-bezier(0, 0.58, 0.99, 1.51);
+}
+@-webkit-keyframes welcome {
+    0% {
+        top: 0;
+        left:0;
+    }
+    100% {
+        top: 34%;
+        left: 50%;
+    }
 }
 @keyframes welcome {
     0% {
@@ -198,7 +235,8 @@ a {
     min-width: 160px;
     margin: 0;
     padding: 0;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
     opacity: 0.5;
 }
 .nav:hover ul{
@@ -262,19 +300,31 @@ a {
     max-width: 260px;
 }
 .cen-ter {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 }
 /* synopsis end */
 /* nature  start*/
 #billing {
     background: #F0F0F0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     padding-bottom: 60px;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .profile {
     text-align: center;
@@ -306,10 +356,15 @@ a {
     padding-bottom: 20px;
 }
 #billing .nature {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     width: 100%;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 }
 @media screen and (min-width:415px){
@@ -325,9 +380,14 @@ a {
     padding-bottom: 20px;
 }
 #billing .nature {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     max-width: 1200px;
 }
 }
@@ -405,13 +465,15 @@ a {
     text-align: left;
     left: 50%;
     top: 50%;
-    transform: translate(50%,-50%);
+    -webkit-transform: translate(50%,-50%);
+            transform: translate(50%,-50%);
 }
 #role-intr .tourism li:nth-child(even) .tourism-intr {
     right: 50%;
     text-align: right;
     top: 50%;
-    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
 }
 }
 /* role-intr end */
@@ -433,9 +495,14 @@ a {
 }
 .culture {
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .culture>div {
     max-width: 250px;
@@ -493,14 +560,25 @@ a {
     margin-left: 40px;
 }
 .contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     padding: 40px 0;
 }
 #your-review .self-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 
 }
 #your-review input {
@@ -522,6 +600,7 @@ a {
     width: 25px;
     height: 25px;
     background-image: url(./img/icon1.png);
+    -webkit-transition: all 1s;
     transition: all 1s;
     background-repeat: no-repeat;
     display: inline-block;
@@ -553,8 +632,13 @@ a {
     padding: 30px 0;
     width: 100%;
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 .inbl {
     margin: 10px;

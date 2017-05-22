@@ -490,10 +490,11 @@ h1+p {
 /* comment start */
 #comment .culture-title {
     text-align: center;
-    margin: 50px;
+    padding: 50px;
 }
 #comment {
     padding-bottom: 30px;
+    background-color: rgba(193, 193, 193, 0.06);
 }
 #comment .culture img {
    background-repeat: no-repeat;

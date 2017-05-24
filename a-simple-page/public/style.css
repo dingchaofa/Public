@@ -11,7 +11,6 @@ body,html {
              "Microsoft YaHei", "微软雅黑", 
              STXihei, "华文细黑", 
              serif;
-    color: #666;
 }
 ul,ol {
     list-style: none;
@@ -264,6 +263,7 @@ h1+p {
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 60px;
+    color: #f6f4f7;
 }
 #synopsis .wall {
     font-size: 18px;
@@ -273,7 +273,6 @@ h1+p {
 #synopsis h1, #synopsis p,#synopsis h3{
     padding-bottom:30px; 
     padding-top: 20px;
-    color: #F6F4F7;
 }
 #synopsis p{
     text-align: left;
@@ -349,12 +348,14 @@ h1+p {
 #billing .nature h4 {
     font-size: 16px;
     padding: 6px;
+    color: #58554f;
 }
 #billing .nature p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-left: 20px;
+    color: #58554f;
 }
 @media screen and (max-width:415px){
 #billing li {
@@ -364,6 +365,7 @@ h1+p {
     text-align: center;
     background:#DCD9D4;
     padding-bottom: 20px;
+    
 }
 #billing .nature {
     display: -webkit-box;
@@ -388,6 +390,7 @@ h1+p {
     vertical-align: top;
     background:#DCD9D4;
     padding-bottom: 20px;
+    color: #fff;
 }
 #billing .nature {
     display: -webkit-box;

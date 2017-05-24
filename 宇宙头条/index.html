@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>《宇宙头条》你想看的，这里都有！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="head">
+        <div class="headTop">
+            <div class="refresh">
+                <h3>宇宙头条</h3>
+                <span>刷新</span>
+            </div>
+            <div class="selfCenter"><a href="manage">小人</a></div>
+        </div>
+        <div class="navbar">
+            <div class="addBar"><a href="channels">加号</a></div>
+            <ul>
+                <li>推荐</li>
+                <li>视频</li>
+                <li>热点</li>
+                <li>社会</li>
+                <li>娱乐</li>
+                <li>军事</li>
+                <li>科技</li>
+            </ul>
+        </div>
+    </header>
+    <div class="wrap">
+        <div class="ct-waterfall">
+            <div class="tipPage">加载中...</div>
+            <ul id="pic-ct">
+                <template>
+                <li class="item">
+                    <a href="#" class="link">
+                        <img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt="">
+                        <h4 class="header">标题</h4>
+                        <p class="desp">
+                            当地时间2016年3月1日，在东部与亲俄武装作战中受伤的乌克兰士兵接受海豚治疗。
+                        </p>
+                    </a>
+    		    </li>
+                </template>
+            </ul>
+            <div class="loadmore"></div>
+        </div>
+    </div>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+       let refresh = $('.refresh'),
+       tipPage = $('.tipPage')
+       refresh.on('touchstart',function(e){
+           eTouch = e
+           curPage +=9
+           Ajax()
+           tipPage.css('display','block')
+       })
+       refresh.on('click',function(){
+           console.log(12121)
+       })
+    </script>
+</body>
+</html>

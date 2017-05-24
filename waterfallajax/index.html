@@ -98,7 +98,6 @@
         var colSumHeight = [],
             nodeWidth = $('.item').outerWidth(true),
             colNum = parseInt($('#pic-ct').width() / nodeWidth);
-
         for (var i = 0; i < colNum; i++) {
             colSumHeight.push(0)
         }
@@ -107,7 +106,6 @@
                 var $cur = $(this);
                 var idx = 0,
                     minSumHeight = colSumHeight[0];
-
                 for (var i = 0; i < colSumHeight.length; i++) {
                     if (colSumHeight[i] < minSumHeight) {
                         idx = i;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+        }
+
+        .view {
+            width: 500px;
+            height: 500px;
+            align-self: center;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            transform: rotateX(0deg)rotateY(0deg);
+            transition: all 0.8s
+        }
+
+
+        .common {
+            align-self: center;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .out {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient( #607A89, #C5D7E1);
+            transform: translateZ(-50px);
+            z-index: 10;
+            opacity: 0.9;
+        }
+
+        .center {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient( #0B1922, #527183);
+            transform: translateZ(0);
+            opacity: 0.9;
+        }
+        .in {
+            width: 100px;
+            height: 100px;
+            background-color: #000719;
+            transform: translateZ(50px);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="view">
+            <div class="common out"></div>
+            <div class="common center"></div>
+            <div class="common in"></div>
+        </div>
+    </div>
+    <script>
+        var view = document.querySelector('.view')
+        setInterval(function(){
+            console.log(1)
+            var x = Math.random()*100-50,
+            y = Math.random()*100-50
+            view.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`
+        },800)
+        
+    </script>
+</body>
+</html>

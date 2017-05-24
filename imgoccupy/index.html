@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="img/00.png" data-src="img/11.jpg" alt="">
+        <img src="img/00.png" data-src="img/22.jpg" alt="">
+        <img src="img/00.png" data-src="img/33.jpg" alt="">
+    </div>
+     <script>
+    var allImages = document.getElementsByTagName('img')
+    //console.log(allImages.length)
+    for(var i=0;i<3;i++){
+        let a = i
+        let imgs = document.createElement('img')
+        imgs.src = allImages[i].getAttribute('data-src')
+        console.log(imgs.src)
+        imgs.onload = function(){ //加载完成的事件，执行程序
+            //console.log(this)
+            //this.src = this.getAttribute('data-src')
+            //console.log('end')
+            //console.log(i) i传递不进来 
+            //console.log(a) 
+            allImages[a].src = imgs.src
+            console.log(allImages[a].src)
+        }
+    }
+
+
+
+  </script>
+</body>
+</html>

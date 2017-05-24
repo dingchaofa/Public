@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-lazyloadajax</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+            margin: 30px;
+        }
+        img {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+        }
+        .ct {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 14px;
+        }
+        .loadmore {
+            visibility: hidden;
+            margin: 3px;
+            padding: 3px;
+        }
+        .notdata {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+    </ul>
+    <div class="loadmore"></div>
+    <p class="notdata"></p>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        var isData = true  //没有数据的时候，禁止ajax请求
+        var pageindex = 0;
+        var isArrive = true  //判断数据是否到来，防止慢网速重复请求
+        isVisible($('.loadmore'));
+        $(window).scroll(function () {
+            isVisible($('.loadmore'))
+        })
+        function isVisible($node) {
+            if (!isArrive || !isData) {
+                return
+            }
+            var distance = $node.offset().top
+            var winTop = $(window).scrollTop()
+            if (winTop + $(window).height() > distance && winTop < distance + $node.innerHeight()) {
+                isArrive = false
+                $.ajax({
+                    url: '/loadmore',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        page: pageindex  //一次ajax请求多少数据应该由开发者决定，而用户决定发多少次ajax请求。
+                    }
+                }).done(addData).fail(function () {
+                    alert('请求出错了')
+                })
+            }
+        }
+        function addData(data) {
+            if (data.status === 0) {
+                if (data.content.length === 0) {
+                    $('.notdata').text('没有更多数据了···')
+                    isData = false
+                    return;
+                }
+                $.each(data.content, callback)
+                pageindex++
+                isArrive = true
+                isVisible($('.loadmore'))  //当节点还是出现在视口内，就会再发出一条ajax请求，由58行判断是否发出请求
+            } else {
+                alert('服务器出错')
+            }
+        }
+        function callback(index, value) {
+            var html = `<li>
+                <a href="${value.link}">
+                    <div class="ct">
+                        <img src="${value.img}" alt="">
+                        <div class="brif">
+                            <h4>${value.title}</h4>
+                            <p>${value.brif}</p>
+                        </div>
+                    </div>
+                </a>
+            </li>`
+            $('ul').append(html)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-ajax</title>
+    <script src="./ajaxed.js"></script>
+    <style>
+        #btn {
+            display: block;
+            margin: 20px auto;
+            font-size: 20px;
+            padding: 7px 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        #btn:hover {
+            background-color: indianred;
+        }
+
+        #btn:active {
+            background-color: darkred;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        .container>li {
+            padding: 10px;
+            margin: 10px 0;
+            list-style: none;
+            border: 1px solid indianred;
+            border-radius: 4px;
+        }
+
+        .container li:hover {
+            background-color: green;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="container">
+        <li>新闻1</li>
+    </ul>
+    <button id="btn">加载更多···</button>
+    <script>
+        /*
+        var btn = document.querySelector('#btn')
+        var ul = document.querySelector('.container')
+        var index = 2
+        var length = 5
+        var isDataArrive = true  //状态锁，防止慢网速下，重复点击，重复发送
+        btn.addEventListener('click',function(){
+            if(!isDataArrive){
+                return
+            }
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)){
+                    var result =JSON.parse(xhr.responseText)               
+                    var fragment = document.createDocumentFragment() //创建一个片段，存放响应的数据                 
+                    for(var i=0; i<result.length; i++){
+                        var node = document.createElement('li')
+                        node.innerText = result[i] 
+                        fragment.appendChild(node) //把节点添加到片段末尾
+                    }
+                    ul.appendChild(fragment)//把整个片段里的内容添加到ul节点末尾
+                    index =index+5
+                    isDataArrive = true //得到数据了，状态锁变为true
+                }
+            }
+            xhr.open('get','\loadmore?index='+index+'&length=5',true) //请求参数
+            xhr.send()  //发送请求
+            isDataArrive = false  //发出请求，状态锁改为false
+        })
+        */
+        var btn = document.querySelector('#btn')
+        var ul = document.querySelector('.container')
+        var length = 5
+        var pageindex = 2
+        var isDataArrive = true
+        btn.addEventListener('click', function () {
+            if (!isDataArrive) {
+                return
+            }
+            loadmore(function (result) {
+                renderpage(result)  //渲染页面
+                pageindex += 5
+                isDataArrive = true
+            })
+            isDataArrive = false
+        })
+
+        function loadmore(callback) {  //请求数据
+            var options = {
+                type: 'get',
+                url: '/loadmore',
+                data: {
+                    index: pageindex,
+                    length: 5
+                },
+                success: callback,
+                error: function () {
+                    alert('服务器出错')
+                }
+            }
+            ajax(options)
+        }
+        function renderpage(result) {
+            var fragment = document.createDocumentFragment() //创建一个片段，存放响应的数据                 
+            for (var i = 0; i < result.length; i++) {
+                var node = document.createElement('li')
+                node.innerText = result[i]
+                fragment.appendChild(node) //把节点添加到片段末尾
+            }
+            ul.appendChild(fragment)//把整个片段里的内容添加到ul节点末尾
+        }
+        /*
+        function ajax(options) {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200 || xhr.status === 304) {
+                        var result = JSON.parse(xhr.responseText)
+                        options.onSuccess(result)
+                    } else {
+                        options.onError()
+                    }
+                }
+            }
+            var query = '?'
+            for (key in options.data) {
+                query += key + '=' + options.data[key] + '&'
+            }
+            query = query.substr(0, query.length - 1)
+            xhr.open(options.type, options.url + query, true) //请求参数
+            xhr.send()  //发送请求
+        }
+        */
+    </script>
+</body>
+</html>

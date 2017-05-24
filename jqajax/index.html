@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-size: 14px;
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    #commodity {
+        position: relative;
+        left: 50px;
+        top: 50px;
+    }
+    .goods>.category ul {
+        width: 722px;
+        border: 1px solid #eee;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        top: -5px;
+    }
+    .goods>.category li {
+        width: 220px;
+        height: 220px;
+        border: 1px solid #ccc;
+        margin:10px;
+        position: relative;
+        padding: 10px;
+        text-align: center;
+    }
+    .goodsname p {
+        text-align: left;
+    }
+    .navbar {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        border-bottom-color: #fff;
+        display: inline-block;
+        
+    }
+    .navbar>li {
+        /*display: inline-block;*/
+        padding:8px 0;
+        
+        text-align: center;
+        float: left;
+    }
+    .navbar>li span {
+        padding:0 10px;
+        border-left: 1px solid #ccc;
+    }
+    .navbar>li:first-child span {
+        border-left: none;
+    }
+    .hover {
+        background-color: #f9f6f6;
+    }
+    .category {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+    .goodsname a {
+        position: absolute;
+        border: 1px solid darkred;
+        color: darkred;
+        top: 50%;
+        left: 50%;
+        border-radius: 3px;
+        transform: translate(-50%,-50%);
+        
+        padding: 15px 20px;
+    }
+    .goodsname div {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(73, 237, 58, 0.3);
+        display: none;
+        top: 0px;
+        left: 0px;
+        /* opacity: 0.3; */
+    }
+    .loadmore {
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 10px 15px;
+        background-color: #faf4f4;
+        margin-top: 12px;
+        margin-left: 12px;
+        display: inline-block;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="commodity">
+        <ul class="navbar">
+            <li class="tabname hover"><span>热门</span></li>
+            <li class="tabname"><span>珠宝首饰</span></li>
+            <li class="tabname"><span>奢侈品</span></li>
+        </ul>
+        <ul class="goods">
+            <li class="category active">
+                <ul class="addcontent">
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="22.jpg" alt="">
+                    <p>藏金镶玉路路通吊坠</p>
+                    <p>￥1699.00</p>
+                </li>
+            <li class="goodsname">
+                <div><div><a href="">立即抢购</a></div></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><div><a href="">立即抢购</a></div></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><div><a href="">立即抢购</a></div></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><div><a href="">立即抢购</a></div></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><div><a href="">立即抢购</a></div></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+                </ul>
+            </li>
+            <li class="category">
+                <ul>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="11.jpg" alt="">
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p>￥1699.00</p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <p></p>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+                </ul>
+            </li>
+            <li class="category">
+                <ul>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="33.jpg" alt="">
+                    <p>藏金镶玉路路通吊坠</p>
+                    <p>￥1699.00</p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+            <li class="goodsname">
+                <div><a href="">立即抢购</a></div>
+                    <img src="" alt="">
+                    <h3></h3>
+                    <p></p>
+                </li>
+                </ul>
+            </li>
+            <span class="loadmore">加载更多</span>
+        </ul>
+        
+    </div>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script>
+        // $('.tabname').click(function(){
+        //     $('.tabname').removeClass('hover')
+        //     $(this).addClass('hover')
+        //     var index = $('.tabname').index($(this))
+            /*
+            console.log($('.tabname'))
+            console.log($(this))
+            console.log($('.tabname').index($(this)))
+             console.log($('.category')[index]) DOM对象
+            $($('.category')[index]).show() 注意DOM对象和jQuery对象切换
+            这种方式，进入页面，不点击不显示，不合适。
+            */
+            //添加 类
+        //     $('.category').removeClass('active')
+        //     $($('.category')[index]).addClass('active')
+        // })
+        // $('.goodsname').mouseleave(function(){
+        //      $('.goodsname div').fadeOut('slow')
+        // })
+        // $('.goodsname').mouseenter(function(){
+        //     $(this).find('div').fadeIn('slow')
+        // })
+        //ajax请求数据
+        /*请求方法：'get', 接口：'loadmore',数据类型：JSON,请求数据一页，一页有三个 */
+        var pageindex=0
+        $('.loadmore').click(function(){
+            $.ajax({
+                url: '/loadmore',
+                type:'get',
+                dataType: 'JSON',
+                data: {
+                    page: pageindex,
+                    length: 3
+                }
+            }).done(function(product){
+                if(product.status===0){
+                    if(product.data.length===0){ //if(product.data===[]){永远不会等于[]，引用类型数值
+                        //console.log('没有更多了...')
+                        $('.loadmore').text('没有更多了...')
+                        // return;没必要用return，长度为0时，不再执行each方法
+                    }
+                    $.each(product.data,function appendHtml(bbb,aaa){ //必须同时传入两个参数代表key，value
+                        //也可以用this代替参数
+                        console.log('buzhixing')
+                    var html= ''
+                    html = '<li class="goodsname">'+
+                    '<div><a href="">立即抢购</a></div>'+
+                    '<img src="'+aaa.img+'" alt="">'+
+                    '<p>'+aaa.name+'</p>'+
+                    '<p>'+ aaa.price +'</p>'+
+                    '</li>'
+                    $('.addcontent').append(html)
+                })
+                }else{
+                    console.log('服务器出错')
+                }
+                pageindex ++
+            }).fail(function(){
+                console.log('error...')
+            })
+        })
+        
+        $('.tabname').click(function(){
+            $('.tabname').removeClass('hover')
+            $(this).addClass('hover')
+            var index = $('.tabname').index($(this))
+        $('.category').removeClass('active')
+        $($('.category')[index]).addClass('active')
+    })
+    /*不能直接这样使用，否则a链接效果不出来，因为没有选中所有的goodsname；
+        $('.goodsname').mouseleave(function(){
+             $('.goodsname div').fadeOut()
+        })
+        $('.goodsname').mouseenter(function(){
+            $(this).find('div').fadeIn()
+        })
+        */
+        $('.addcontent').on('mouseleave','.goodsname',function(){
+            $('.goodsname div').fadeOut()
+        })
+        $('.addcontent').on('mouseenter','.goodsname',function(){
+            $(this).find('div').fadeIn()
+        })
+    </script>
+</body>
+</html>

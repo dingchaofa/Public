@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-modol</title>
+    <style>
+        button {
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #btn{
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 20px;
+        }
+        .box {
+            width: 500px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            background: #eee;
+            display: none;
+            padding: 14px;
+            box-shadow: 0px 3px 10px rgb(184, 184, 199);
+        }
+        .box footer {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+        .box .cancle {
+            float: right;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <div class="box">
+        <span class="cancle">×</span>
+        <header>标题</header>
+        <section>
+            <p>内容</p>
+            <p>内容</p>
+            <input id="inpt" type="text" placeholder='请输入六位数字密码'>
+        </section>
+        <footer>
+            <button class="btn2">取消</button>
+            <button>确定</button>
+        </footer>
+    </div>
+    <script>
+        var btn = document.querySelector('#btn')
+        var box = document.querySelector('.box')
+        var cancle = document.querySelector('.cancle')
+        var btn2 = document.querySelector('.btn2')
+        var inpt = document.querySelector('#inpt')
+        
+        inpt.addEventListener('blur',function(){
+            //console.log(typeof(inpt.value)) //字符串
+            if(inpt.value.match(/^\d{6}$/)){
+                alert('登录成功')
+            }else{
+                alert('请输入六位数字密码')
+            }
+        })
+        btn.addEventListener('click',handle)
+        function handle(e){
+            e.stopPropagation()
+            box.style.display = 'block'
+        }
+        box.addEventListener('click',function(e){
+            e.stopPropagation()
+        })
+        window.addEventListener('click',remove)
+        cancle.addEventListener('click',remove)
+        btn2.addEventListener('click',remove)
+        function remove(){
+            box.style.display = 'none'
+        }
+    </script>
+</body>
+</html>

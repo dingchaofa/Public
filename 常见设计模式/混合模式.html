@@ -1,0 +1,24 @@
+<script>
+    function Person(name){
+        this.name = name
+    }
+    Person.prototype.sayName = function(){
+        console.log(this.name)
+    }
+    function Student(name,grade){
+        Person.call(this,name)
+        this.grade = grade
+    }
+    Student.prototype = Person.prototype
+    //Student.prototype = Object.create(Person.prototype)
+    //Student.prototype = create(Person.prototype)
+    function create(construction_prototype){
+        function F(){}
+        F.prototype = construction_prototype
+        return new F()
+    }
+
+
+    var studentA = new Student('xioaming',100)
+    console.log(studentA.sayName())
+</script>

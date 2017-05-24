@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-jqajax-loadmore</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        li {
+            list-style: none;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        li:hover {
+            background-color: green;
+        }
+
+        .btn {
+            border: 1px solid darkred;
+            border-radius: 3px;
+            padding: 10px 15px;
+            display: inline-block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            color: darkred;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>content one</li>
+        <li>content two</li>
+    </ul>
+    <div class="btn">加载更多···</div>
+
+    <script>
+        var $btn = $('.btn')
+        var pageindex = 3
+        var isArrive = true
+        $btn.click(function () {
+            if (isArrive) {
+                isArrive = false
+                $.ajax({
+                    url: '/loadmore',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        page: pageindex,
+                        length: 5
+                    }
+                }).done(function (data) {
+
+                    if (data.status === 0) {
+                        var html = ''
+                        for (var i = 0; i < 5; i++) {
+                            html += `<li>` + data.content[i] + `</li>`
+                        }
+                        $('ul').append(html)
+                        pageindex += 5
+                    } else {
+                        html = '<li>服务器出错</li>'
+                        $('ul').append(html)
+                    }
+                }).fail(function () {
+                    html = '<li>请求发生错误</li>'
+                    $('ul').append(html)
+                }).always(function(){
+                    isArrive = true
+                })
+            }else{
+                return
+            }
+        })
+    </script>
+</body>
+
+</html>

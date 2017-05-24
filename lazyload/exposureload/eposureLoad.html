@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-lazyload</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="javascript:;">1<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+        <li><a href="javascript:;">2<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+        <li><a href="javascript:;">3<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+        <li><a href="javascript:;">4<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        <li><a href="javascript:;">5<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a></li>
+        <li><a href="javascript:;">6<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></a></li>
+        <li><a href="javascript:;">7<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></a></li>
+        <li><a href="javascript:;">8<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></a></li>
+        <li  class="simple" style="border: 1px solid;"><a href="javascript:;">9<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></a></li>
+        <li><a href="javascript:;">10<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg"></a></li>
+        <li><a href="javascript:;">11<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg"></a></li>
+        <li><a href="javascript:;">12<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg"></a></li>
+        <li><a href="javascript:;">13<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"></a></li>
+        <li><a href="javascript:;">14<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"></a></li>
+        <li><a href="javascript:;">15<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"></a></li>
+        <li><a href="javascript:;">16<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></a></li>
+        <li><a href="javascript:;">17<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/17.jpg"></a></li>
+        <li><a href="javascript:;">18<img src="00.png" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/18.jpg"></a></li>
+    </ul>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+        
+var load = function (){  //外部无法访问函数内部的变量
+var init = function($node){
+    $('img').each(function(){
+            isVisible($(this))
+        })
+
+        $(window).scroll(function(){
+            $('img').each(function(){
+                isVisible($(this))
+            })
+        })
+
+        function isVisible($node){
+            var distance = $node.offset().top
+            var winTop = $(window).scrollTop()
+            if(winTop+$(window).height() > distance && winTop < distance+$node.innerHeight()){
+                if($node.attr('data-src') !== $node.attr('src')){
+                    console.log('不在在窗口显示')
+                    var url = $node.attr('data-src')
+                    $node.attr('src',url)
+                }
+            }
+        }
+}
+
+    return {
+        init: init
+    }
+}()
+load.init($('img'))  
+    </script>
+</body>
+</html>

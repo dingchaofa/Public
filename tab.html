@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        #tabcontain {
+            width: 500px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .tabnav>li {
+            /*float: left;*/
+            padding: 10px 20px;
+            border-top: 1px solid transparent;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            cursor: pointer;
+        }
+        .tabnav {
+            margin: 10px 20px 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .tabnav .active {
+            border: 1px solid #ccc;
+            border-bottom-color: #fff;
+            position: relative;
+            margin-bottom: -1px;
+            border-radius: 4px;
+        }
+        .tabcontent {
+            border-top: 1px solid #ccc;
+        }
+        .tabcontent li {
+            display: none;
+        }
+        .tabcontent .active {
+            display: block;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="tabcontain">
+        <ul class="tabnav">
+            <li>项目</li>
+            <li class="active">介绍</li>
+            <li>关于</li>
+        </ul>
+        <ul class="tabcontent">
+            <li class="active">项目展示</li>
+            <li>个人介绍</li>
+            <li>关于我们</li>
+        </ul>
+    </section>
+    <script>
+        var navlist = document.querySelectorAll('.tabnav li')
+        var contentlist = document.querySelectorAll('.tabcontent li')
+        var navhead = document.querySelector('.tabnav')
+
+        for (var j = 0; j < navlist.length; j++) {
+            navlist[j].addEventListener('click', function (e) {
+                for (var i = 0; i < navlist.length; i++) {
+                    navlist[i].classList.remove('active')
+                    contentlist[i].classList.remove('active')
+                }
+                e.target.classList.add('active')
+                var index = [].indexOf.call(navlist, e.target)
+                //console.log(index)
+                contentlist[index].classList.add('active')
+            })
+        }
+ /*
+        navhead.addEventListener('click', function (e) {
+            if (e.target.tagName.toLowerCase() === 'li') {
+                //console.log(e.target.tagName)  输出大写，但是标签是小写
+                //console.log(e.target.tagName.toLowerCase()) 大写转小写
+                for (var i = 0; i < navhead.children.length; i++) {
+                    navhead.children[i].classList.remove('active')
+                    contentlist[i].classList.remove('active')
+                }
+                e.target.classList.add('active')
+                var index = [].indexOf.call(navhead.children, e.target)
+                contentlist[index].classList.add('active')
+            }
+        })
+*/
+    </script>
+</body>
+</html>

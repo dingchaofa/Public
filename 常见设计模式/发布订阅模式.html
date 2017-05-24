@@ -1,0 +1,38 @@
+<script>
+    var bindEvent = (function(){
+        var events = {}
+        // events = {
+        //  e:[{handle1:function(){}},{handle2:function(){}},...handleN]
+        // }
+        function on(e,handle){  //把某个事件绑定回调函数
+            events[e] = events[e] || []
+            events[e].push({handle})
+        }
+        function fire(e,arg){  //触发某个事件
+            if(!events[e]){
+                return
+            }
+            //bindEvent.on(e,arg)
+            for(var i=0; i<events[e].length; i++){
+                 events[e][i].handle(arg)
+            }
+        }
+        function off(e){  //取消某个事件
+            if(!events[e]){
+                return
+            }
+            events[e] = []
+        }
+        return {on,fire, off}
+    })()
+
+    bindEvent.on('change',function(val){
+        console.log('change...  now val is ' + val)
+    })
+    //debugger
+    bindEvent.fire('change','hello')
+
+    bindEvent.off('change')
+
+    bindEvent.fire('change','执行才怪')
+</script>

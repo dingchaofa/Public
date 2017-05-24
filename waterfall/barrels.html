@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dinf-barrels</title>
+    <style>
+        ** {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ct {
+      width: 1160px;
+      margin: 0 auto;
+    }
+
+    .img-row {
+      margin-bottom: 8px;
+      
+    }
+
+    .img-row:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .img-box {
+      float: left;
+      margin-left: 8px;
+    }
+    </style>
+</head>
+<body>
+    <div class="ct">
+        <!--<div class="img-box">-->
+            
+        </div>
+    </div>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        function Barrels($ct){
+            this.$ct= $ct
+            //console.log(this.getImgUrl(3))
+            this.getImgUrl(40)
+            this.baseHeight = 200
+            this.rowList = []
+            //this.render()
+            //console.log(this.imgUrl(3))
+        }
+        Barrels.prototype= {
+            
+            getImgUrl: function (num){
+                var _this = this
+                this.imgUrl(num).forEach(function(url){
+                    
+                    var img = new Image()
+                    img.src = url
+                    img.addEventListener('load',function(){
+                        var originWidth = img.width,
+                        originHeight = img.height,
+                        ratio = originWidth/originHeight;
+
+                        var imgInfo = {
+                        target: $(img),
+                        imgWidth: _this.baseHeight*ratio,
+                        imgHeight: _this.baseHeight,
+                        ratio: ratio
+                    };
+                    
+                        _this.render(imgInfo)
+                    })
+                })
+                /*
+                for循环遍历和forEach遍历还是有区别的，for循环会不等内容，先完成遍历
+                可能会造成变量i 传递不进去，而forEach是一个个执行，自动传递参数index
+                for(var i=0; i<num; i++){
+                    var imgs = new Image()
+                    imgs.src = this.imgUrl(num)[i]
+                    arr.push(imgs)
+                }
+                /*
+                arr.forEach(function(ele){
+                    ele.addEventListener('load',function(){
+                        console.log('-----------------')
+                        console.log(ele)
+                        _this.render(ele)
+                    })
+                })
+                //for循环
+                for(var k=0; k<num; k++){
+                    let m = k
+                    console.log(arr[k])
+                    arr[k].addEventListener('load',function(){
+                        console.log('-----------------')
+                        console.log(arr[m])
+                        _this.render(arr[m])
+                    })
+                }
+                */
+            },
+            imgUrl: function(num){
+                var url = []
+                var n =1
+                for(var i=0; i<num; i++){
+                    var width = 200//Math.random()*100+200
+                    var height = 200//Math.random()*100+100
+                    
+                    //url.push(`https://unsplash.it/${width}/${height}/?random`)
+                    url.push(`http://cdn.jirengu.com/book.jirengu.com/img/${n}.jpg`)
+                    n ++
+                }
+                return url
+            },
+            render: function(imgInfo){
+                var _this = this,
+                rowWidth = this.$ct.width(),
+                addWidth = 0,
+                addHeight = 0
+
+                _this.rowList.push(imgInfo)
+                
+                $.each(_this.rowList,function(idx, imgInfo){
+                    addWidth += imgInfo.imgWidth
+                    console.log(addWidth,1)
+                    if(addWidth>rowWidth){
+                        console.log('-----------------')
+                        _this.rowList.pop()
+                        addWidth -= imgInfo.imgWidth-40
+                        console.log(addWidth,2)
+                        //addWidth = rowWidth  //令目前的图片宽度撑满容器宽度
+                        addHeight = rowWidth*imgInfo.imgHeight/addWidth  //得到撑满后的宽度
+                        _this.addHtml(addHeight)
+                        _this.rowList = []
+                        _this.rowList.push(imgInfo)
+                    }
+                    
+                })
+            },
+            addHtml: function(addHeight){
+                
+                
+                var $rowCt = $('<div class="img-row"></div>');
+                $.each(this.rowList, function(idx, imgInfo){
+                var $imgCt = $('<div class="img-box"></div>'),
+                    $img = imgInfo.target;
+                    $img.height(addHeight);
+                    $imgCt.append($img);
+                    $rowCt.append($imgCt);
+                });
+                //console.log(this.$ct)
+                this.$ct.append($rowCt);
+            }
+        }
+        var barrels = new Barrels($('.ct'))
+    </script>
+</body>
+</html>

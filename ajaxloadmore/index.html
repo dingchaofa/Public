@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-ajaxloadmore</title>
+    <style>
+        #btn {
+            display: block;
+            margin: 20px auto;
+            font-size: 20px;
+            padding: 7px 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        #btn:hover {
+            background-color: indianred;
+        }
+        #btn:active {
+            background-color: darkred;
+        }
+        .container {
+            padding: 0;
+        }
+        .container>li {
+            padding: 10px;
+            margin: 10px 0;
+            list-style: none;
+            border: 1px solid indianred;
+            border-radius: 4px;
+        }
+        .container li:hover {
+            background-color: green;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+        <li>新闻1</li>
+    </ul>
+    <button id="btn">加载更多···</button>
+    <script>
+        var btn = document.querySelector('#btn')
+        var ul = document.querySelector('.container')
+        var index = 2
+        var length = 5
+        var isDataArrive = true  //状态锁，防止慢网速下，重复点击，重复发送
+        btn.addEventListener('click',function(){
+            if(!isDataArrive){
+                return
+            }
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function(){
+                //console.log(xhr.readyState, xhr.status)
+                if(xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)){
+                    var result =JSON.parse(xhr.responseText)
+                    //console.log(result)
+                    var fragment = document.createDocumentFragment() //创建一个片段，存放响应的数据
+                    
+                    for(var i=0; i<result.length; i++){
+                        var node = document.createElement('li')
+                        node.innerText = result[i] 
+                        fragment.appendChild(node) //把节点添加到片段末尾
+                    }
+                    ul.appendChild(fragment)//把整个片段里的内容添加到ul节点末尾
+                    index =index+5
+                    isDataArrive = true //得到数据了，状态锁变为true
+                    /*                    
+                    var html = '' 
+                    for(var i=0;i<result.length;i++){
+                        html += '<li>'+result[i]+'</li>'
+                    }
+                    ul.innerHTML = html //这种方法存在安全隐患，直接把HTML当做内容插入，
+                    当用户输入的是JavaScript代码时，就有可能把用户的输入当做代码来执行。
+                    //而且还存在相同内容覆盖的问题。
+                    */
+                }
+            }
+            xhr.open('get','/loadmore?index='+index+'&length=5',true) //请求参数,url最好以 / 开头，浏览器兼容，以 \开头也不报错。但不保证其他浏览器不报错。
+            xhr.send()  //发送请求
+            isDataArrive = false  //发出请求，状态锁改为false
+        })
+    </script>
+</body>
+</html>

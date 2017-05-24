@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-waterfall</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .ct {
+        position: relative;
+    }
+    .item {
+        width: 200px;
+        position: absolute;
+        margin: 10px;
+        transition: all 1s;
+    }
+    .h1 {
+        height: 200px;
+        background-color: lightsalmon;
+    }
+    .h2 {
+        height: 300px;
+        background-color: darkblue;
+    }
+    .h3 {
+        height: 350px;
+        background-color: darkorchid;
+    }
+    .h4 {
+        height: 400px;
+        background-color: hotpink;
+    }
+</style>
+<body>
+    <div class="row">
+
+    
+    <div class="ct">
+        <div class="item h1">1</div>
+        <div class="item h2">2</div>
+        <div class="item h3">3</div>
+        <div class="item h4">4</div>
+        <div class="item h2">5</div>
+        <div class="item h1">6</div>
+        <div class="item h3">7</div>
+        <div class="item h2">8</div>
+        <div class="item h4">9</div>
+        <div class="item h3">10</div>
+        <div class="item h2">11</div>
+        <div class="item h4">12</div>
+        <div class="item h1">13</div>
+        <div class="item h2">14</div>
+        <div class="item h3">15</div>
+        <div class="item h1">16</div>
+        <div class="item h2">17</div>
+        <div class="item h3">18</div>
+    </div>
+    </div>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        /*
+        瀑布流布局三个特点：
+        1.等宽，所有图片宽度相等
+        2.每一列的每一个元素到容器左边距是相等的
+        3.元素总是先插入最小高度的元素下方
+        */
+        waterFall()
+        $(window).resize(waterFall)
+        function waterFall(){
+
+            var $item = $('.item'),
+            itemWidth = $item.outerWidth(true)
+            var leng = parseInt($('.ct').width() / itemWidth)
+            var itemArr = []
+            for(var i=0; i<leng; i++){
+                itemArr[i] = 0
+            }
+            
+            $item.each(function(){
+                var minItemArr = Math.min.apply(null,itemArr)
+                var minIndex = itemArr.indexOf(minItemArr)
+
+                $(this).css({
+                    top: minItemArr,
+                    left: itemWidth*minIndex
+                })
+                minItemArr += $(this).outerHeight(true)
+                itemArr[minIndex] = minItemArr
+            })
+            //return waterFall()
+        }
+        
+    </script>
+</body>
+</html>

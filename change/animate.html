@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-jquery</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    a {
+        text-decoration: none;
+    }
+    .ct {
+        
+        padding:0 10px;
+        display: inline-block;
+        
+    }
+    .tltle {
+        border-top: 1px solid #fff;
+        padding: 15px;
+        display:inline-block;
+    }
+    .ct>.common:first-of-type>.tltle {
+        border-top: none;
+    }
+    .tltle span {
+        color: #fff;
+        
+    }
+    .common {
+        background-color: darkred;
+        padding: 0 10px;
+    
+    }
+    .one {
+        border: none;
+    }
+    .choic {
+        margin-left: 30px;
+    }
+    .child {
+        display: none;
+        max-width: 190px;
+        position: absolute;
+        left: 143px;
+        border: 1px solid #f2cbcb;
+    }
+ .child>a {
+        display: inline-block;
+        padding: 15px;
+        color: #010101;
+    }
+    .last{
+        /*display: inline-block;*/
+        top: 208px;
+    }
+    .one {
+        top: 0;
+    }
+    .two {
+        top: 52px;
+    }
+    .three {
+        top: 104px;
+    }
+    .four {
+        top: 155px;
+    }
+
+</style>
+<body>
+    <div class="ct">
+      <div class="common">
+          <div class="tltle">
+            <a href="javascript:;"><span>商品1</span><span class="choic">></span></a>
+          </div>
+        
+        <div class="one child">
+            <a href="javascript:;"><span>子商品1</span></a>
+            <a href="javascript:;"><span>子商品2</span></a>
+        </div>
+      </div>
+      <div class="common">
+          <div class="tltle">
+            <a href="javascript:;"><span>商品2</span><span class="choic">></span></a>
+          </div>
+        
+        <div class="two child">
+            <a href="javascript:;"><span>子商品1</span></a>
+            <a href="javascript:;"><span>子商品2</span></a>
+            <a href="javascript:;"><span>子商品3</span></a>
+        </div>
+      </div>
+      <div class="common">
+          <div class="tltle">
+            <a href="javascript:;"><span>商品3</span><span class="choic">></span></a>
+          </div>
+        
+        <div class="three child">
+            <a href="javascript:;"><span>子商品1</span></a>
+            <a href="javascript:;"><span>子商品2</span></a>
+            <a href="javascript:;"><span>子商品3</span></a>
+            <a href="javascript:;"><span>子商品4</span></a>
+        </div>
+      </div>
+      <div class="common">
+          <div class="tltle">
+            <a href="javascript:;"><span>商品4</span><span class="choic">></span></a>
+          </div>
+
+        <div class="child four">
+            <a href="javascript:;"><span>子商品1</span></a>
+            <a href="javascript:;"><span>子商品2</span></a>
+            <a href="javascript:;"><span>子商品3</span></a>
+            <a href="javascript:;"><span>子商品4</span></a>
+            <a href="javascript:;"><span>子商品5</span></a>
+        </div>
+      </div>
+      <div class="five common">
+          <div class="tltle">
+            <a href="javascript:;"><span>商品5</span><span class="choic">></span></a>
+          </div>
+        
+        <div class="child last">
+            <a href="javascript:;"><span>子商品1</span></a>
+            <a href="javascript:;"><span>子商品2</span></a>
+            
+            <a href="javascript:;"><span>子商品3</span></a>
+            <a href="javascript:;"><span>子商品4</span></a>
+            
+            <a href="javascript:;"><span>子商品5</span></a>
+            <a href="javascript:;"><span>子商品6</span></a>
+            
+        </div>
+      </div>
+    </div>
+    <script>
+        $('.common').mouseenter(function(){
+            
+            $(this).find('.child').show()
+        })
+        $('.common').mouseleave(function(){
+            
+            $(this).find('.child').hide()
+        })
+    </script>
+</body>
+</html>

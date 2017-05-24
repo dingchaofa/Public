@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ding-consignation</title>
+    <style>
+        li {
+            list-style: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            color: darkred;
+            border-radius: 3px;
+        }
+
+        .btn {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            border: 1px solid darkred;
+            margin: 10px;
+            padding: 10px 15px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id='idt'>你点击的是这个</p>
+    <ul>
+        <li>项目1 <span>"&lt;li&gt;项目1"&lt;span&gt;子项目1&lt;/span&gt;"&lt;/li&gt;"</span>
+            <span>子项目1</span>
+        </li>
+        <li>项目2</li>
+        <li>项目3</li>
+        <li>项目4</li>
+        <p>事件代理只对li及其子元素有效，对ul下的其他子元素无效，这段在ul内</p>
+    </ul>
+
+    <button class="btn">添加</button>
+    <script>
+        var btn = document.querySelector('.btn')
+        var ul = document.querySelector('ul')
+        var idt = document.querySelector('#idt')
+        var n = 1
+        btn.onclick = function () {
+            var html = document.createElement('li')
+            html.innerText = `新项目${n}`
+            ul.appendChild(html)
+            n++
+        }
+        ul.onclick = function (e) {
+            //console.log(e.target.tagName)
+            var tar = e.target  
+            //保存每次运行while的变量，不然，e.target永远不会改变
+            while (tar.tagName !== 'LI') {      
+                console.log(e.target.tagName)
+                // 事件代理，即使是目标元素的子元素，同样可以触发事件
+                //e.target = e.target.parentNode  //不能直接用e.target，因为e.target不会变
+                tar = tar.parentNode  
+                // tar.parentNode 必须把得到的tar重新赋值，不然tar还是tar
+                console.log(tar.tagName)
+                if (tar.tagName === 'UL') {   //当找到事件代理对象，就没必要再往上找了。
+                    tar = null
+                    console.log(tar,'empty')
+                    break  //必须，不然无限循环，即使是null，还会循环
+                }
+            }
+            if(!tar){
+            var p = document.createElement('p')
+            p.innerText = '你点击的不是li'
+            document.body.insertBefore(p, idt)
+            }else{
+                var p = document.createElement('p')
+                p = e.target.cloneNode(true)
+                document.body.insertBefore(p, ul)
+                console.log(p)
+            }
+        }
+    </script>
+</body>
+
+</html>

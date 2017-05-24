@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ding-alternateimg</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        #carousel {
+            position: relative;
+            width: 300px;
+            height: 229px;
+            margin:auto;
+            top: 50vh;
+            transform: translateY(-50%);
+        }
+        #carousel .ct .hover {
+            display: block;
+        }
+        #carousel .ct li {
+            position: absolute;
+            display: none;
+        }
+        #carousel .ct img {
+            width: 300px;
+        }
+        #carousel .btn {
+            display: flex;
+            width: 300px;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            
+        }
+        .btn>div {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(231, 218, 218,0.2);
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #carousel .icon {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #carousel .icon li {
+            width: 20px;
+            height: 5px;
+            border-radius: 3px;
+            display: inline-block;
+            cursor: pointer;
+            background-color: rgba(172, 186, 198,0.5);
+        }
+        #carousel .icon .active {
+            background-color: rgba(241, 242, 233, 0.93)
+        }
+    </style>
+</head>
+
+<body>
+<div id="carousel">
+    <div class="view">
+        <ul class="ct">
+            <li class="hover" data-index=0><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg" alt="1"></a></li>
+            <li data-index=1><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/20.jpg" alt="2"></a></li>
+            <li data-index=2><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/30.jpg" alt="3"></a></li>
+            <li data-index=3><a href="javascript:void(0)"><img src="http://cdn.jirengu.com/book.jirengu.com/img/31.jpg" alt="4"></a></li>
+        </ul>
+    </div>
+
+    <div class="btn">
+        <div class="pre">&lt;</div>
+        <div class="next">&gt;</div>
+    </div>
+    <ul class="icon">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    var $imgAll = $('.ct li'),
+        $ct = $('.ct'),
+        $imglength = $imgAll.children().length,
+        $pre = $('.pre'),
+        $next = $('.next'),
+        isOver = false,
+        $icon = $('.icon li'),
+        $view = $('#carousel .view'),
+        $btn = $('#carousel .btn'),
+        $btndiv = $('#carousel .btn div')
+    //console.log($imglength)
+    // $imgAll.first().clone().appendTo($ct)
+    // $imgAll.eq($imglength-1).clone().prependTo($ct)
+    // $ct.css('left','-300px')   //展示第一个
+
+    $pre.click(playPre)
+    $next.click(playNext)
+    var index = 0
+
+    function playNext(){  //下一个
+        if(isOver){
+            return
+        }
+        index ++
+        isOver = true
+        if(index===4){
+            index = 0
+        }
+        $imgAll.fadeOut().eq(index).fadeIn()
+        console.log(index)
+        isOver = false   
+        $icon.removeClass('active').eq(index).addClass('active')
+        
+    }
+
+    function playPre(){  //上一个
+        if(isOver){
+            return
+        }
+        index --
+        isOver = true
+        if(index===-1){
+            index = 3
+        }
+        $imgAll.fadeOut().eq(index).fadeIn()
+        console.log(index)
+        isOver = false
+        $icon.removeClass('active').eq(index).addClass('active')
+        
+    }
+
+    $icon.click(function(){  //点击缩略图，显示目标图片
+        if(isOver){
+            return
+        }
+        isOver = true
+        index = $icon.index($(this))
+        $imgAll.fadeOut().eq(index).fadeIn()
+        isOver = false    
+        $icon.removeClass('active').eq(index).addClass('active')
+    })
+
+    setInterval(playNext,2000)  //自动轮播
+
+    $btn.hide()
+    // $btn.css('visibility','hidden')
+    $view.mousemove(function(e){
+        var xPosition = e.pageX-$view.offset().left
+            if(xPosition>100 && 200>xPosition){
+                $btn.fadeOut()
+            }else{
+                $btn.fadeIn()
+            }
+    })
+    $btndiv.mouseenter(function(e){
+                $btn.fadeIn()
+    })
+    $view.mouseleave(function(){
+        $btn.fadeOut()
+    })
+
+</script>
+</body>
+</html>

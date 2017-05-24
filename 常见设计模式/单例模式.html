@@ -1,0 +1,26 @@
+<script>
+    let Person = (function(){
+        var isExist
+        function init(){
+            //define private methods and properties
+            div.onclick = function(){
+                console.log('you click this div')
+            }
+        }
+        return {
+            isExistPerson: function(){
+                if(!isExist){
+                    isExist = init()
+                }else{
+                    return isExist
+                }
+            }
+        }
+        
+    }())
+    let s1 = person.isExistPerson()
+    let s2 = person.isExistPerson()
+    console.log(s1)
+    console.log(s2)
+
+</script>

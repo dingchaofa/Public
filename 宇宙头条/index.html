@@ -18,16 +18,20 @@
             <div class="search"><a href="search/search.html"></a></div>
         </div>
         <div class="navbar">
-            <div class="addBar"><a href="channels">加号</a></div>
-            <ul>
-                <li>推荐</li>
-                <li>视频</li>
-                <li>热点</li>
-                <li>社会</li>
-                <li>娱乐</li>
-                <li>军事</li>
-                <li>科技</li>
-            </ul>
+            <div class="addBar"><a href="channels/channels.html"></a></div>
+            <div class="removeScroll">
+                <div class="allBar">
+                <ul>
+                    <li><a href="javascript:void(0);">推荐</a></li>
+                    <li><a href="javascript:;">视频</a></li>
+                    <li><a href="javascript:;">热点</a></li>
+                    <li><a href="javascript:;">社会</a></li>
+                    <li><a href="javascript:;">美文</a></li>
+                    <li><a href="javascript:;">军事</a></li>
+                    <li><a href="javascript:;">科技</a></li>
+                </ul>
+                </div>
+            </div>
         </div>
         <div class="modul">
             <div class="popup">
@@ -40,7 +44,8 @@
     </header>
     <div class="wrap">
         <div class="ct-waterfall">
-            <div class="tipPage">加载中...</div>
+            <div class="tipLoad">加载中...</div>
+            <span>为您推荐了9篇文章</span>
             <ul id="pic-ct">
                 <template>
                 <li class="item">
@@ -59,9 +64,10 @@
     </div>
     <script src="./jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
+    <script src="public.js"></script>
     <script>
+        //动画模块
        let refresh = $('.refresh'),
-       tipPage = $('.tipPage'),
        letter = $('.letter'),
        modul = $('.modul'),
        closePopup = $('.closePopup'),
@@ -71,13 +77,12 @@
            eTouch = e
            curPage +=9
            Ajax()
-           tipPage.css('display','block')
-
-           refreshRotate.addClass('rotate')
+           refreshRotate.addClass('rotate') //刷新动画
            setTimeout(()=>{
                refreshRotate.removeClass('rotate')
            },750)
        })
+
        letter.on('touchstart',function(e){
             modul.fadeIn()
        })

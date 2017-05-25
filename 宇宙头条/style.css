@@ -102,10 +102,12 @@ a {
     vertical-align: middle;
     user-select: none;
 }
+.navbar {
+    background-color: #f4f5f6;
+}
 .navbar ul {
     display: flex;
     justify-content: space-around;
-    background-color: #F4F5F6;
     line-height: 38px;
 }
 header.head {
@@ -116,18 +118,57 @@ header.head {
     left: 0;
     right: 0;
 }
-.navbar ul {
+.navbar .allBar ul {
     display: flex;
     justify-content: space-around;
     background-color: #F4F5F6;
-    line-height: 38px;
+    line-height: 40px;
+}
+.navbar .allBar li>a {
+    color: #505050;
+    font-size: 17px;
+    line-height: 26px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -webkit-tap-highlight-color: rgba(0,0,0,.3);
+    white-space: nowrap;
+}
+.removeScroll {
+    overflow: hidden;
+    height: 38px;
+}
+.allBar {
+    overflow-x: scroll;
+    white-space: nowrap;
+    height: 60px;
 }
 .navbar .addBar {
     position: absolute;
     right: 0;
     line-height: 38px;
+    background-color: #f4f5f6;
 }
-.tipPage {
+.navbar .addBar>a{
+    background: url(image/addChannels.png) no-repeat 50%;
+    display: block;
+    width: 40px;
+    height: 38px;
+    background-size: 20px;
+}
+.tipLoad {
+    display: none;
+    text-align: center;
+}
+.tipLoad+span {
+    text-align: center;
+    position: fixed;
+    background-color: rgba(193, 184, 184, 0.8);
+    width: 100%;
+    line-height: 30px;
+    top: 80px;
     display: none;
 }
 .refresh .rotate {

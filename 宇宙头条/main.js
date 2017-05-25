@@ -3,11 +3,13 @@
 */
 //懒加载
 var eTouch;
+var tipLoad = $('.tipLoad'),
+    recommon = $('.tipLoad+span')
 var curPage = 0
 var perPageCount = 9
 var isArrive = true  //判断数据是否到来，防止慢网速重复请求
 isVisible($('.loadmore'))
-curPage +=9
+
 $(window).on('scroll', function () {
     isVisible($('.loadmore'))
 })
@@ -16,10 +18,10 @@ function isVisible($node) {
     var winTop = $(window).scrollTop()
     if (winTop + $(window).height() > distance && winTop < distance + $node.innerHeight()) {
         if(!isArrive){
-        return
+            return
         }
-    isArrive = false
-    Ajax()
+        isArrive = false
+        Ajax()
     }
 }
 function Ajax(){
@@ -36,7 +38,8 @@ function Ajax(){
     }).done(function (ret) {
         if (ret && ret.status && ret.status.code === "0") {
             if(eTouch){
-                appendHead(ret.data)
+                isTip()
+                appendHead(ret.data) //刷新时，把新得到的内容放到页面的前面
             }else{
                 callback(ret.data);   //如果数据没问题，那么生成节点并摆放好位置
             }
@@ -53,16 +56,31 @@ function Ajax(){
 function callback(nodeList) {
     $.each(nodeList, function (index, news) {
         var $node = getNode(news)
-        $node.find('img').on('load', function () {
+        $node.find('img').on('load',()=>{
             $('#pic-ct').append($node)
         })
     })
+}
+
+function isTip(){  //是否出现提示加载，第一次进入页面不提示
+    if(curPage!==0){
+        tipLoad.slideDown(800,()=>{
+            tipLoad.slideUp(600,()=>{
+                recommon.fadeIn(800, ()=>{
+                    setTimeout(()=>{
+                        recommon.fadeOut(800)
+                    },800)
+                })
+            })                  
+        })
+    }
 }
 function appendHead(nodeList){
     $('#pic-ct li').remove()
     callback(nodeList)
     eTouch = null
 }
+
 function getNode(item) {
     let tpl = `<li class="item clearfix">
     <a href="${item.url}" class="link">

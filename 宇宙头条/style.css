@@ -18,8 +18,9 @@ li {
     list-style: none;
 }
 a {
-    text-decoration-line: none;
+    text-decoration: none;
     color: #222;
+    -webkit-tap-highlight-color: transparent;
 }
 .wrap {
     /*width: 900px;*/
@@ -47,6 +48,7 @@ a {
     margin: 0 12px;
     letter-spacing: 1px;
     font-size: 16px;
+    font-weight: 400;
 }
 #pic-ct .desp {
     font-size: 14px;
@@ -71,17 +73,34 @@ a {
     align-items: center;
     padding: 0 10px;
     color: white;
-    line-height: 45px;
+    line-height: 44px;
+}
+.head .letter {
+    background: url('image/letter.png') no-repeat;
+    background-size: contain;
+    width: 32px;
+    height: 25px;
+}
+.head .refresh {
+    display: flex;
 }
 .head .refresh h3{
-    display: inline-block;
+    font-size: 18px;
 }
 .head .refresh span{
-    padding-left: 5px;
+    background: url(image/refresh.png) no-repeat;
+    width: 25px;
+    background-size: 15px;
+    background-position: center;
 }
-.head .headTop div:nth-child(3){
-    flex-grow: 1;
-    text-align: right;
+.head .headTop .search>a{
+    background: url('image/search.png');
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    vertical-align: middle;
+    user-select: none;
 }
 .navbar ul {
     display: flex;
@@ -110,4 +129,77 @@ header.head {
 }
 .tipPage {
     display: none;
+}
+.refresh .rotate {
+animation: xyRotate .7s linear;
+}
+@keyframes xyRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+         }
+    100% {
+     transform: rotate(1turn);
+    }
+}
+/* popup modul */
+.modul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.5);
+    display: none;
+}
+.modul .popup {
+    width: 270px;
+    height: 225px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -113px;
+    margin-left: -135px;
+    border-radius: 4px;
+}
+.modul .banner {
+    margin-top: 10px;
+    margin-left: 54px;
+    width: 165px;
+    height: 121px;
+    background: url('image/modul.png') no-repeat;
+    background-size: contain;
+}
+.modul .closePopup {
+    width: 40px;
+    height: 32px;
+    background: url('image/cancel.png') no-repeat 50%;
+    background-size: 17px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.modul p {
+    text-align: center;
+    color: #a5a5a5;
+    font-size: 17px;
+    margin-top: 6px;
+    margin-bottom: 24px;
+}
+.modul .openNow {
+    margin-left: 25px;
+    width: 220px;
+    background: #ff6762;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    text-shadow: 0 1px 1px #f0221c;
+    color: #fff;
+    font-size: 20px;
 }

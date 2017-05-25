@@ -10,11 +10,12 @@
 <body>
     <header class="head">
         <div class="headTop">
+            <div class="letter"></div>
             <div class="refresh">
                 <h3>宇宙头条</h3>
-                <span>刷新</span>
+                <span></span>
             </div>
-            <div class="selfCenter"><a href="manage">小人</a></div>
+            <div class="search"><a href="search/search.html"></a></div>
         </div>
         <div class="navbar">
             <div class="addBar"><a href="channels">加号</a></div>
@@ -27,6 +28,14 @@
                 <li>军事</li>
                 <li>科技</li>
             </ul>
+        </div>
+        <div class="modul">
+            <div class="popup">
+                <div class="banner"></div>
+                <p>已加载好您感兴趣的头条</p>
+                <div class="openNow">立即打开</div>
+                <div class="closePopup"></div>
+            </div>
         </div>
     </header>
     <div class="wrap">
@@ -52,15 +61,28 @@
     <script src="main.js"></script>
     <script>
        let refresh = $('.refresh'),
-       tipPage = $('.tipPage')
+       tipPage = $('.tipPage'),
+       letter = $('.letter'),
+       modul = $('.modul'),
+       closePopup = $('.closePopup'),
+       refreshRotate = $('.refresh>span')
+
        refresh.on('touchstart',function(e){
            eTouch = e
            curPage +=9
            Ajax()
            tipPage.css('display','block')
+
+           refreshRotate.addClass('rotate')
+           setTimeout(()=>{
+               refreshRotate.removeClass('rotate')
+           },750)
        })
-       refresh.on('click',function(){
-           console.log(12121)
+       letter.on('touchstart',function(e){
+            modul.fadeIn()
+       })
+       closePopup.on('touchstart',function(){
+           modul.fadeOut()
        })
     </script>
 </body>

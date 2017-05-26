@@ -64,7 +64,6 @@
     </div>
     <script src="./jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
-    <script src="public.js"></script>
     <script>
         //动画模块
        let refresh = $('.refresh'),
@@ -89,6 +88,24 @@
        closePopup.on('touchstart',function(){
            modul.fadeOut()
        })
+
+    let allLi = $('.allBar>ul>li'),
+    barUl = $('.allBar>ul')
+    
+    //获取删除栏数据模块
+    let barList = localStorage.getItem('removeChannels')
+    //console.log(barList)
+    if(barList){  //判断localstorage是否存有删除栏栏数据，数据来自于channels.html。
+        allLi.remove()
+        $(JSON.parse(barList)).appendTo(barUl)
+        allLi = $('.allBar>ul>li')  //allLi内容改变了，需要重新获取
+    }
+    //console.log(typeof JSON.parse(barLst) === 'string')
+    //console.log(allLi.length)
+    barUl.width(()=>{
+        return allLi.width()*allLi.length
+    })
+    console.log(barUl.width())
     </script>
 </body>
 </html>

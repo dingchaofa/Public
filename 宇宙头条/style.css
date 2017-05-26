@@ -105,11 +105,6 @@ a {
 .navbar {
     background-color: #f4f5f6;
 }
-.navbar ul {
-    display: flex;
-    justify-content: space-around;
-    line-height: 38px;
-}
 header.head {
     position: fixed;
     z-index: 1;

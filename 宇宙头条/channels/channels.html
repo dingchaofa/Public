@@ -45,6 +45,46 @@
         </div>
     </div>
     <script src="../jquery-3.2.1.min.js"></script>
-    <script src="../public.js"></script>
+    <script>
+        //channels modul 添加和移除频道
+        let removeChannels = $('.removeChannels'),
+            addChannels = $('.addChannels'),
+            removeList = $('.removeChannels li'),
+            addList = $('.addChannels li'),
+            allRemoveChannels = localStorage.getItem('removeChannels'),
+            allAddChannels = localStorage.getItem('addChannels')
+ 
+        if(allRemoveChannels){
+            addList.remove()
+            removeList.remove() //把删除栏的所有频道都删除，把localstorage中存储的频道插入removeChannels中
+
+            $(JSON.parse(allRemoveChannels)).appendTo(removeChannels)
+            $(JSON.parse(allAddChannels)).appendTo(addChannels)
+        }else{
+            window.localStorage.setItem('removeChannels',JSON.stringify(removeChannels[0]['innerHTML'])) //先存储再删除
+            window.localStorage.setItem('addChannels',JSON.stringify(addChannels[0]['innerHTML']))
+        }
+        
+        addChannels.on('touchstart','li',toRemove) //给添加栏所有的频道绑定转移到移除栏
+        function toRemove(){
+            $(this).appendTo(removeChannels)
+            saveChannels()
+        }
+        removeChannels.each((index,ele)=>{
+            $(ele).on('touchstart','li',toAdd) //给移除栏所有的频道绑定转移到添加栏
+        })
+        function toAdd(){
+            $(this).appendTo(addChannels)
+            saveChannels()
+        }
+
+        function saveChannels(){ //把频道存储在localstorage
+            //console.log(addData)
+            let addData = JSON.stringify(addChannels[0]['innerHTML']), //不能把addData放到函数外，因为要获取每次执行这个函数都要重新获取数据。保证数据的变化。
+                removeData = JSON.stringify(removeChannels[0]['innerHTML'])
+            window.localStorage.setItem('addChannels',addData)
+            window.localStorage.setItem('removeChannels',removeData)
+        }
+    </script>
 </body>
 </html>

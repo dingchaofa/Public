@@ -58,8 +58,16 @@ function callback(nodeList) {
         var $node = getNode(news)
         $node.find('img').on('load',()=>{
             $('#pic-ct').append($node)
+            //console.log($('#pic-ct li').length) //当li大于5时调用这个函数
+            if($('#pic-ct li').length === 5){ 
+                DownLoad()
+                console.log('进入页面，执行一次DownLoad()就够了')
+            }
         })
     })
+    
+    // DownLoad()
+    // 
 }
 
 function isTip(){  //是否出现提示加载，第一次进入页面不提示

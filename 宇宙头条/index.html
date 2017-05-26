@@ -64,6 +64,7 @@
     </div>
     <script src="./jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
+    <script src="downLoad.js"></script>
     <script>
         //动画模块
        let refresh = $('.refresh'),
@@ -72,15 +73,16 @@
        closePopup = $('.closePopup'),
        refreshRotate = $('.refresh>span')
 
-       refresh.on('touchstart',function(e){
-           eTouch = e
+       refresh.on('touchstart',refreshNews)
+       function refreshNews(e){
+           eTouch = e //在main.js中判断是否是来自点击刷新按钮的刷新
            curPage +=9
            Ajax()
            refreshRotate.addClass('rotate') //刷新动画
            setTimeout(()=>{
                refreshRotate.removeClass('rotate')
            },750)
-       })
+       }
 
        letter.on('touchstart',function(e){
             modul.fadeIn()

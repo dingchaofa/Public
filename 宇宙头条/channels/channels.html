@@ -18,10 +18,12 @@
             <ul class="controlDetail removeChannels">
                 <li><a href="javascript:;">推荐</a></li>
                 <li><a href="javascript:;">热点</a></li>
+                <li><a href="javascript:;">社会</a></li>
                 <li><a href="javascript:;">美文</a></li>
                 <li><a href="javascript:;">军事</a></li>
-                <li><a href="javascript:;">社会</a></li>
                 <li><a href="javascript:;">科技</a></li>
+                <li><a href="javascript:;">体育</a></li>
+                <li><a href="javascript:;">财经</a></li>
             </ul>
         </div>
         <div id="addChannels">
@@ -29,8 +31,6 @@
             <ul class="controlDetail addChannels">
                 <li><a href="javascript:;">汽车</a></li>
                 <li><a href="javascript:;">旅游</a></li>
-                <li><a href="javascript:;">体育</a></li>
-                <li><a href="javascript:;">财经</a></li>
                 <li><a href="javascript:;">国际</a></li>
                 <li><a href="javascript:;">时尚</a></li>
                 <li><a href="javascript:;">游戏</a></li>
@@ -53,7 +53,7 @@
             addList = $('.addChannels li'),
             allRemoveChannels = localStorage.getItem('removeChannels'),
             allAddChannels = localStorage.getItem('addChannels')
- 
+
         if(allRemoveChannels){
             addList.remove()
             removeList.remove() //把删除栏的所有频道都删除，把localstorage中存储的频道插入removeChannels中
@@ -70,9 +70,9 @@
             $(this).appendTo(removeChannels)
             saveChannels()
         }
-        removeChannels.each((index,ele)=>{
-            $(ele).on('touchstart','li',toAdd) //给移除栏所有的频道绑定转移到添加栏
-        })
+
+        removeChannels.on('touchstart','li:gt(0)',toAdd) //给移除栏所有的频道绑定转移到添加栏
+        
         function toAdd(){
             $(this).appendTo(addChannels)
             saveChannels()

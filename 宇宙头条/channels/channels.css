@@ -77,3 +77,6 @@ ul.controlDetail {
     text-align: center;
     line-height: 2em;
 }
+.removeChannels li:first-child a {
+    background-color: #f0f0f0;
+}

@@ -15,21 +15,26 @@
                 <h3>宇宙头条</h3>
                 <span></span>
             </div>
-            <div class="search"><a href="search/search.html"></a></div>
+            <div class="search">
+                <a href="search/search.html"></a>
+            </div>
         </div>
         <div class="navbar">
-            <div class="addBar"><a href="channels/channels.html"></a></div>
+            <div class="addBar">
+                <a href="channels/channels.html"></a>
+            </div>
             <div class="removeScroll">
                 <div class="allBar">
-                <ul>
-                    <li><a href="javascript:void(0);">推荐</a></li>
-                    <li><a href="javascript:;">视频</a></li>
-                    <li><a href="javascript:;">热点</a></li>
-                    <li><a href="javascript:;">社会</a></li>
-                    <li><a href="javascript:;">美文</a></li>
-                    <li><a href="javascript:;">军事</a></li>
-                    <li><a href="javascript:;">科技</a></li>
-                </ul>
+                    <ul>
+                        <li class="cur"><a href="javascript:void(0);">推荐</a></li>
+                        <li><a href="javascript:;">热点</a></li>
+                        <li><a href="javascript:;">社会</a></li>
+                        <li><a href="javascript:;">美文</a></li>
+                        <li><a href="javascript:;">军事</a></li>
+                        <li><a href="javascript:;">科技</a></li>
+                        <li><a href="javascript:;">体育</a></li>
+                        <li><a href="javascript:;">财经</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -48,15 +53,16 @@
             <span>为您推荐了9篇文章</span>
             <ul id="pic-ct">
                 <template>
-                <li class="item">
-                    <a href="#" class="link">
-                        <img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0" alt="">
-                        <h4 class="header">标题</h4>
-                        <p class="desp">
-                            当地时间2016年3月1日，在东部与亲俄武装作战中受伤的乌克兰士兵接受海豚治疗。
-                        </p>
-                    </a>
-    		    </li>
+                    <li class="item">
+                        <a href="#" class="link">
+                            <img src="http://s.img.mix.sina.com.cn/auto/resize?img=http%3A%2F%2Fwww.sinaimg.cn%2Fdy%2Fslidenews%2F5_img%2F2016_09%2F453_75615_657883.jpg&size=250_0"
+                                alt="">
+                            <h4 class="header">标题</h4>
+                            <p class="desp">
+                                当地时间2016年3月1日，在东部与亲俄武装作战中受伤的乌克兰士兵接受海豚治疗。
+                            </p>
+                        </a>
+                    </li>
                 </template>
             </ul>
             <div class="loadmore"></div>
@@ -67,47 +73,61 @@
     <script src="downLoad.js"></script>
     <script>
         //动画模块
-       let refresh = $('.refresh'),
-       letter = $('.letter'),
-       modul = $('.modul'),
-       closePopup = $('.closePopup'),
-       refreshRotate = $('.refresh>span')
+        let refresh = $('.refresh'),
+            letter = $('.letter'),
+            modul = $('.modul'),
+            closePopup = $('.closePopup'),
+            refreshRotate = $('.refresh>span')
 
-       refresh.on('touchstart',refreshNews)
-       function refreshNews(e){
-           eTouch = e //在main.js中判断是否是来自点击刷新按钮的刷新
-           curPage +=9
-           Ajax()
-           refreshRotate.addClass('rotate') //刷新动画
-           setTimeout(()=>{
-               refreshRotate.removeClass('rotate')
-           },750)
-       }
+        refresh.on('touchstart', refreshNews)
+        function refreshNews(e) {
+            eTouch = e //在main.js中判断是否是来自点击刷新按钮的刷新
+            curPage += 9
+            Ajax()
+            refreshRotate.addClass('rotate') //刷新动画
+            setTimeout(() => {
+                refreshRotate.removeClass('rotate')
+            }, 750)
+        }
 
-       letter.on('touchstart',function(e){
+        letter.on('touchstart', function (e) {
             modul.fadeIn()
-       })
-       closePopup.on('touchstart',function(){
-           modul.fadeOut()
-       })
+        })
+        closePopup.on('touchstart', function () {
+            modul.fadeOut()
+        })
+        //获取删除栏数据模块
+        let allLi = $('.allBar>ul>li'),
+            barUl = $('.allBar>ul'),
+            allBar = $('.allBar')
 
-    let allLi = $('.allBar>ul>li'),
-    barUl = $('.allBar>ul')
-    
-    //获取删除栏数据模块
-    let barList = localStorage.getItem('removeChannels')
-    //console.log(barList)
-    if(barList){  //判断localstorage是否存有删除栏栏数据，数据来自于channels.html。
-        allLi.remove()
-        $(JSON.parse(barList)).appendTo(barUl)
-        allLi = $('.allBar>ul>li')  //allLi内容改变了，需要重新获取
-    }
-    //console.log(typeof JSON.parse(barLst) === 'string')
-    //console.log(allLi.length)
-    barUl.width(()=>{
-        return allLi.width()*allLi.length
-    })
-    console.log(barUl.width())
+        let barList = localStorage.getItem('removeChannels')
+        if (barList) {  //判断localstorage是否存有删除栏栏数据，数据来自于channels.html。
+            allLi.remove()
+            $(JSON.parse(barList)).appendTo(barUl)
+            allLi = $('.allBar>ul>li')  //allLi内容改变了，需要重新获取
+        }
+        //console.log(typeof JSON.parse(barLst) === 'string')
+        //console.log(allLi.length)
+        barUl.width(() => {
+            return allLi.width() * allLi.length
+        })
+        let removeScrollWidth = (barUl.width() - 40) / 2
+
+        //当前导航频道居中
+        allLi.on('touchstart', () => {
+            allLi.on('touchend', moveCenter)
+            allLi.on('touchmove', function () {
+                allLi.off('touchend', moveCenter)
+            })
+        })
+        allLi.on('touchmove', moveCenter)
+        function moveCenter(e) {
+            let index = allLi.index($(this)) - 3
+            allBar.scrollLeft(index * 59)
+            allLi.removeClass('cur')
+            $(this).addClass('cur')
+        }
     </script>
 </body>
 </html>

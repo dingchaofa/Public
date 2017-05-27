@@ -5,111 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ding-ajaxjq-lazyload-waterfall</title>
-    <style>
-        /* lazyload css */
-    .loadmore {
-        visibility: hidden;
-        margin: 3px;
-        padding: 3px;
-    }
-    .notdata {
-        text-align: center;
-    }
-    /* waterfall */
+    <title>Document</title>
+</head>
+<style>
     * {
-        padding: 0;
         margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
-    .ct {
-        position: relative;
+    .parent {
+        overflow: hidden;
+        /* line-height: 40px; */
+        height: 40px;
     }
-    .item {
-        width: 200px;
-        position: absolute;
-        margin: 10px;
-        transition: all 1s;
+
+    .child {
+        overflow-x: scroll;
     }
-    </style>
-</head>
+
+    ul {
+        display: flex;
+        line-height: 60px;
+        width: 826px;
+        background-color: red;
+    }
+
+    .child ul li {
+        width: 59px;
+        list-style: none;
+    }
+</style>
+
 <body>
-    <div class="loadmore"></div>
-    <p class="notdata"></p>
-    <script src="jquery-3.2.1.min.js"></script>
-    <script>
-        /*
-        1.用ajax懒加载
-        2.瀑布流布局
-        */
-        //懒加载
-        var lazyload = new lazyLoad($('.loadmore'))
-
-        function lazyLoad($node){
-            var _this = this
-            var isData = true  //没有数据的时候，禁止ajax请求
-            var pageindex = 0;
-            var isArrive = true   //判断数据是否到来，防止慢网速重复请求
-            this.isVisible($node)
-            $(window).scroll(function () {
-            _this.isVisible($node)
-        })
-    }
-    
-        lazyLoad.prototype = {
-
-        isVisible: function ($node) {
-            if (!isArrive || !isData) {
-                return
-            }
-            var distance = $node.offset().top
-            var winTop = $(window).scrollTop()
-            if (winTop + $(window).height() > distance && winTop < distance + $node.innerHeight()) {
-                isArrive = false
-                $.ajax({
-                    url: '/loadmore',
-                    type: 'get',
-                    dataType: 'JSON',
-                    data: {
-                        page: pageindex  //一次ajax请求多少数据应该由开发者决定，而用户决定发多少次ajax请求。
-                    }
-                }).done(addData).fail(function () {
-                    alert('请求出错了')
-                })
-            }
-        },
-        addData:function (data) {
-            if (data.status === 0) {
-                if (data.content.length === 0) {
-                    $('.notdata').text('没有更多数据了···')
-                    isData = false
-                    return;
-                }
-                $.each(data.content, callback)
-                pageindex++
-                isArrive = true
-                isVisible($('.loadmore'))  //当节点还是出现在视口内，就会再发出一条ajax请求，由58行判断是否发出请求
-            } else {
-                alert('服务器出错')
-            }
-        },
-
-        callback: function (index, value) {
-            var html = `<li>
-                <a href="${value.link}">
-                    <div class="ct">
-                        <img src="${value.img}" alt="">
-                        <div class="brif">
-                            <h4>${value.title}</h4>
-                            <p>${value.brif}</p>
-                        </div>
-                    </div>
-                </a>
-            </li>`
-            $('ul').append(html)
-        }
-        }
-    </script>
+    <div class="parent">
+        <div class="child">
+            <ul>
+                <li>项目1</li>
+                <li>项目2</li>
+                <li>项目3</li>
+                <li>项目4</li>
+                <li>项目5</li>
+                <li>项目6</li>
+                <li>项目7</li>
+                <li>项目8</li>
+                <li>项目9</li>
+                <li>项目10</li>
+                <li>项目11</li>
+                <li>项目12</li>
+                <li>项目13</li>
+                <li>项目14</li>
+            </ul>
+        </div>
+    </div>
 </body>
+
 </html>

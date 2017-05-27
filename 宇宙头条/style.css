@@ -118,6 +118,8 @@ header.head {
     justify-content: space-around;
     background-color: #F4F5F6;
     line-height: 40px;
+    position: relative;
+    transform: translateX(40px);
 }
 .navbar .allBar li>a {
     color: #505050;
@@ -130,21 +132,26 @@ header.head {
     margin-bottom: 5px;
     -webkit-tap-highlight-color: rgba(0,0,0,.3);
     white-space: nowrap;
+    display: inline-block;
 }
 .removeScroll {
     overflow: hidden;
     height: 38px;
+    /*position: absolute;*/
 }
 .allBar {
     overflow-x: scroll;
     white-space: nowrap;
     height: 60px;
+    position: relative;
+    transform: translateX(-40px);
 }
 .navbar .addBar {
     position: absolute;
     right: 0;
     line-height: 38px;
     background-color: #f4f5f6;
+    z-index: 111;
 }
 .navbar .addBar>a{
     background: url(image/addChannels.png) no-repeat 50%;
@@ -238,4 +245,8 @@ animation: xyRotate .7s linear;
     text-shadow: 0 1px 1px #f0221c;
     color: #fff;
     font-size: 20px;
+}
+/* 增加一个点击频道，这个频道居中 */
+.navbar .allBar .cur>a {
+    color: #f85959;
 }

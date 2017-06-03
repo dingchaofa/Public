@@ -1,7 +1,7 @@
 ## 个人兴趣
 
 #### 1.城市风景  
- https://dingchaofa.github.io/Public/a-simple-page/public/
+ https://dingchaofa.github.io/Public/city-drumbeating-site/public/
 
 #### 2.独孤九剑  
 https://dingchaofa.github.io/Public/simpleweb/simpleweb.html

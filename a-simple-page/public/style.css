@@ -666,6 +666,7 @@ h1+p {
     bottom: 10px;
     display: none;
     cursor: pointer;
+    z-index: 9999;
 }
 .gotop img {
     width: 50px;

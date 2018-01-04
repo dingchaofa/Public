@@ -34,3 +34,5 @@ https://dingchaofa.github.io/Public/model.html
 https://dingchaofa.github.io/Public/alternateimg/
 #### 12.轮播组件（淡入淡出效果）   
 https://dingchaofa.github.io/Public/alternateimg/fade.html
+### 13.瀑布流，添加手机端响应式
+https://dingchaofa.github.io/Public/waterfall2/

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>重力加速度API</title>
+</head>
+<body>
+    <h1>需要用手机设备打开</h1>
+    <div id="value">当前的加速度值是：</div>
+</body>
+<script>
+    var value = document.getElementById('value')
+    var num = 0
+var last_update = 0
+
+var last_x = 0,
+    last_y = 0,
+    last_z = 0;
+
+  window.addEventListener('devicemotion',deviceMotionHandler)
+  function deviceMotionHandler(eventData) {
+
+    var acceleration = eventData.accelerationIncludingGravity;
+    var currTime = new Date().getTime();
+    var diffTime = currTime - last_update;
+    //alert('diffTime: '+diffTime)
+    var x = acceleration.x;
+    var y = acceleration.y;
+    var z = acceleration.z;
+
+    console.info(diffTime);
+    if (diffTime > 200) {
+      last_update = currTime;
+      num =num+1
+
+      var speed = Math.sqrt(Math.abs(x*x + y*y + z*z - (last_x*last_x + last_y*last_y +last_z*last_z))) //绝对加速度
+      console.info('speed',speed);
+
+      if (speed > 5) {//这里5是控制摇动的力度
+        //要一摇之后进行业务逻辑处理
+        //alert('num: '+num+'--speed '+speed)
+        value.textContent = '当前的加速度值是：'+speed
+      }
+      last_x = x;
+      last_y = y;
+      last_z = z;
+    }
+}
+</script>
+</html>

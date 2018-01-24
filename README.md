@@ -34,3 +34,7 @@ https://dingchaofa.github.io/Public/model.html
 https://dingchaofa.github.io/Public/alternateimg/
 #### 12.轮播组件（淡入淡出效果）   
 https://dingchaofa.github.io/Public/alternateimg/fade.html
+
+#### 13.浏览器调用重力加速度
+https://dingchaofa.github.io/Public/acceleration/index.html
+

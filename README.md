@@ -32,9 +32,14 @@ https://dingchaofa.github.io/Public/model.html
 
 #### 11.轮播组件（滚屏效果）    
 https://dingchaofa.github.io/Public/alternateimg/
+
 #### 12.轮播组件（淡入淡出效果）   
 https://dingchaofa.github.io/Public/alternateimg/fade.html
 
-#### 13.浏览器调用重力加速度
-https://dingchaofa.github.io/Public/acceleration/index.html
 
+#### 13.瀑布流，添加手机端响应式
+https://dingchaofa.github.io/Public/waterfall2/
+
+
+#### 14.浏览器调用重力加速度
+https://dingchaofa.github.io/Public/acceleration/index.html
